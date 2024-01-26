@@ -31,7 +31,14 @@
     <blockquote>
         Open the console in the browser developer tools to see the API responses.
     </blockquote>
+    
     <div>
+        <!-- Input box for text -->
+        <input type="text" id="textInput" placeholder="Enter text" />
+  
+        <!-- Submit button -->
+        <button id="submit" onclick="submitForm()">Submit</button>
+
         <button id="list" onclick="list()">List</button>
         <button id="get" onclick="get()">Get</button>
         <button id="update" onclick="update()">Update</button>
@@ -39,18 +46,28 @@
         <button id="delete" onclick="del()">Delete</button>
     </div>
     <script>
+        async function submitForm() {
+            // Get the value from the input box
+            const inputText = document.getElementById('textInput').value;
+
+            // Update the 'id' constant with the input text
+            const id = inputText;
+
+            return inputText;
+        }
+
         async function list() {
-        const endpoint = '/data-api/rest/Person';
-        const response = await fetch(endpoint);
-        const data = await response.json();
-        console.table(data.value);
+            const endpoint = '/data-api/rest/Person';
+            const response = await fetch(endpoint);
+            const data = await response.json();
+            console.table(data.value);
         }
         async function get() {
-        const id = 1;
-        const endpoint = `/data-api/rest/Person/Id`;
-        const response = await fetch(`${endpoint}/${id}`);
-        const result = await response.json();
-        console.table(result.value);
+            const id = submitForm();
+            const endpoint = `/data-api/rest/Person/Id`;
+            const response = await fetch(`${endpoint}/${id}`);
+            const result = await response.json();
+            console.table(result.value);
         }
         async function update() {
             const id = 1;
