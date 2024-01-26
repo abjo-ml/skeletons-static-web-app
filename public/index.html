@@ -34,12 +34,15 @@
     
     <div>
         <!-- Input box for number -->
-        <label for="idInput">Input ID:</label>
+        <label for="idInput">Input Id:</label>
         <input id="idInput" type="number" value="1"/>
-  
-        <!-- Submit button -->
-        <button id="submit" onclick="submitForm()">Submit</button>
-
+    </div>
+    <div>
+      <!-- Input box for name -->
+      <label for="nameInput">Input Name:</label>
+      <input id="nameInput" type="text" placeholder="Name"/>
+  </div>
+    <div>   
         <button id="list" onclick="list()">List</button>
         <button id="get" onclick="get()">Get</button>
         <button id="update" onclick="update()">Update</button>
@@ -47,14 +50,16 @@
         <button id="delete" onclick="del()">Delete</button>
     </div>
     <script>
-        async function submitForm() {
+        async function submitFormId() {
             // Get the value from the input box
-            const inputId = document.getElementById('idInput').value;
-
-            // Update the 'id' constant with the input text
-            const id = inputId;
-
+            const id = document.getElementById('idInput').value;
             return id;
+        }
+
+        async function submitFormName() {
+            // Get the value from the input box
+            const name = document.getElementById('nameInput').value;
+            return name;
         }
 
         async function list() {
@@ -64,16 +69,17 @@
             console.table(data.value);
         }
         async function get() {
-            const id = await submitForm();
+            const id = await submitFormId();
             const endpoint = `/data-api/rest/Person/Id`;
             const response = await fetch(`${endpoint}/${id}`);
             const result = await response.json();
             console.table(result.value);
         }
         async function update() {
-            const id = 1;
+            const id = await submitFormId();
+            const name = await submitFormName();
             const data = {
-            Name: "Molly"
+            Name: name
             };
     
             const endpoint = '/data-api/rest/Person/Id';
