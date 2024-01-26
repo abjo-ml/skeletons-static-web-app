@@ -33,8 +33,9 @@
     </blockquote>
     
     <div>
-        <!-- Input box for text -->
-        <input type="text" id="textInput" placeholder="Enter text" />
+        <!-- Input box for number -->
+        <label for="idInput">Input ID::</label>
+        <input id="number" type="number" value="1" name = "idInput"/>
   
         <!-- Submit button -->
         <button id="submit" onclick="submitForm()">Submit</button>
@@ -48,12 +49,12 @@
     <script>
         async function submitForm() {
             // Get the value from the input box
-            const inputText = document.getElementById('textInput').value;
+            const inputId = document.getElementById('idInput').value;
 
             // Update the 'id' constant with the input text
-            const id = inputText;
+            const id = inputId;
 
-            return inputText;
+            return inputId;
         }
 
         async function list() {
