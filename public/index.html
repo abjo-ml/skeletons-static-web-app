@@ -93,9 +93,9 @@
         }
     
         async function create() {
-    
+            const name = await submitFormName();
             const data = {
-            Name: "Pedro"
+            Name: name
             };
     
             const endpoint = `/data-api/rest/Person/`;
@@ -109,7 +109,7 @@
         }
     
         async function del() {
-            const id = 3;
+            const id = await submitFormId();
             const endpoint = '/data-api/rest/Person/Id';
             const response = await fetch(`${endpoint}/${id}`, {
                 method: "DELETE"
