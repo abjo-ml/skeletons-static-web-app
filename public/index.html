@@ -54,7 +54,7 @@
             // Update the 'id' constant with the input text
             const id = inputId;
 
-            return inputId;
+            return id;
         }
 
         async function list() {
@@ -64,7 +64,7 @@
             console.table(data.value);
         }
         async function get() {
-            const id = submitForm();
+            const id = await submitForm();
             const endpoint = `/data-api/rest/Person/Id`;
             const response = await fetch(`${endpoint}/${id}`);
             const result = await response.json();
