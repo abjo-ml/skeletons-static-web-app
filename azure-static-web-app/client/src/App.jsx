@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TableComponent from './TableComponent';
 import './index.css';
 
-const API_URL = 'https://proud-bush-0cec8fb03.5.azurestaticapps.net/api/bus-data';
+const API_URL = 'https://white-pebble-01065ee03.4.azurestaticapps.net/api/bus-data';
 
 function callApi() {
     return fetch(API_URL)
@@ -15,7 +15,7 @@ function callApi() {
 }
 
 function insertApiData(newData) {
-    const POST_URL = 'https://proud-bush-0cec8fb03.5.azurestaticapps.net/api/insert-item'; // Change this URL to the appropriate endpoint
+    const POST_URL = 'https://white-pebble-01065ee03.4.azurestaticapps.net/api/insert-item'; // Change this URL to the appropriate endpoint
     return fetch(POST_URL, {
         method: 'POST',
         headers: {
